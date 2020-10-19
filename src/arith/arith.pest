@@ -1,0 +1,20 @@
+Term = {
+      True
+    | False
+    | IfThenElse
+    | Zero
+    | Succ
+    | Pred
+    | IsZero
+    | "(" ~ Term ~ ")"
+}
+
+True = { "true" }
+False = { "false" }
+IfThenElse = { "if" ~ Term ~ "then" ~ Term ~ "else" ~ Term }
+Zero = { "0" }
+Succ = { "succ" ~ Term }
+Pred = { "pred" ~ Term }
+IsZero = { "iszero" ~ Term }
+
+WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
