@@ -6,11 +6,11 @@ use pest_derive::Parser;
 #[grammar = "arith/arith.pest"]
 struct ArithParser;
 
-pub fn parse(source: &str) -> Result<Vec<AstNode>, pest::error::Error<Rule>> {
+pub fn parse(source: &str) -> Result<AstNode, pest::error::Error<Rule>> {
     Ok(ArithParser::parse(Rule::Term, source)?
-        .into_iter()
+        .next()
         .map(|term| term_to_ast(term))
-        .collect())
+        .unwrap())
 }
 
 fn term_to_ast(pair: pest::iterators::Pair<Rule>) -> AstNode {
