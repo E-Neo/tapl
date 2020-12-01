@@ -1,11 +1,19 @@
 Term = {
-      True
-    | False
+      AppTerm
     | IfThenElse
-    | Zero
+}
+
+AppTerm = {
+      ATerm
     | Succ
     | Pred
     | IsZero
+}
+
+ATerm = {
+      True
+    | False
+    | Zero
     | "(" ~ Term ~ ")"
 }
 
@@ -13,8 +21,8 @@ True = { "true" }
 False = { "false" }
 IfThenElse = { "if" ~ Term ~ "then" ~ Term ~ "else" ~ Term }
 Zero = { "0" }
-Succ = { "succ" ~ Term }
-Pred = { "pred" ~ Term }
-IsZero = { "iszero" ~ Term }
+Succ = { "succ" ~ ATerm }
+Pred = { "pred" ~ ATerm }
+IsZero = { "iszero" ~ ATerm }
 
 WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
